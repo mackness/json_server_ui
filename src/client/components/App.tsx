@@ -1,9 +1,9 @@
 import React from "react";
 import JsonEditor from "./JsonEditor";
 import styled from "styled-components";
-import { updateLocalDb, updateRemoteDb } from "../model";
+import { updateLocalDb, updateRemoteDb, openExternal } from "../model";
 
-const c = `{
+const __INITIAL_STATE__ = `{
   "posts": [
     {
       "id": 1,
@@ -29,7 +29,7 @@ const c = `{
 `;
 
 export default function App() {
-    const [code, setCode] = React.useState(c);
+    const [code, setCode] = React.useState(__INITIAL_STATE__);
     const [url, setUrl] = React.useState('');
     const [isEditorActive, setActiveEditor] = React.useState(true);
     const handleSave = (event: React.SyntheticEvent): any => {
@@ -39,11 +39,15 @@ export default function App() {
             updateRemoteDb(url)
         }
     };
+    const handleClick = () => {
+        openExternal('https://github.com/typicode/json-server#getting-started');
+    }
     return (
         <Container>
             {/* <Caret /> */}
             <Header>
                 <H1>Local db.json</H1>
+                <InfoButton onClick={handleClick}>?</InfoButton>
             </Header>
             <JsonEditor
                 code={code}
@@ -140,8 +144,15 @@ const SaveButton = styled(Button)`
     font-size: 13px;
 `;
 
+const InfoButton = styled(Button)`
+    width: 20px;
+    height: 20px;
+    padding: 0 0 1px 0;
+    margin-right: 2px;
+`;
+
 const Header: any = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `;

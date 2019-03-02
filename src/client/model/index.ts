@@ -11,3 +11,9 @@ export function updateRemoteDb(payload: string): AxiosPromise<string> {
         payload
     })
 }
+
+export function openExternal(payload: string): AxiosPromise<string> {
+    return axios.post('http://localhost:8080/api/external', {
+        payload
+    });
+}

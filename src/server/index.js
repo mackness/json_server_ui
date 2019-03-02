@@ -9,6 +9,7 @@ const appRootDir = require('app-root-dir');
 const enableDestroy = require('server-destroy');
 const jsonServer = require('json-server');
 const fs = require('fs');
+const { shell } = require('electron');
 
 let jsonServerProcess;
 
@@ -48,7 +49,6 @@ function startServer() {
     app.use(express.static(path.join(appRootDir.get(), 'public')));
 
     app.use('/api/local', (req, res) => {
-
         fs.writeFile(`${path.join(__dirname)}/db.json`, JSON.parse(req.body.payload, undefined, 2), function(err) {
             if (err) {
                 res.sendStatus(500);
@@ -73,6 +73,11 @@ function startServer() {
                 res.sendStatus(500);
             }
         });
+    });
+
+    app.use('/api/external', (req, res) => {
+        shell.openExternal(req.body.payload);
+        res.sendStatus(200);
     });
 
     // catch 404 and forward to error handler
