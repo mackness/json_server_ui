@@ -1,20 +1,28 @@
-import * as React from 'react';
-import styled from 'styled-components';
-import Editor from 'react-simple-code-editor';
-import { highlight, languages } from 'prismjs';
-import 'prismjs/components/prism-clike';
-import 'prismjs/components/prism-javascript';
+import * as React from 'react'
+import styled from 'styled-components'
+import Editor from 'react-simple-code-editor'
+import { highlight, languages } from 'prismjs'
+import 'prismjs/components/prism-clike'
+import 'prismjs/components/prism-javascript'
 
 interface JsonEditorProps {
-    code: string;
-    setCode: Function;
-    isEditorActive: boolean;
-    setActiveEditor: Function;
+    code: string
+    setCode: Function
+    isEditorActive: boolean
+    setActiveEditor: Function
 }
 
-export default function JsonEditor({code, setCode, isEditorActive, setActiveEditor}: JsonEditorProps): JSX.Element {
+export default function JsonEditor({
+    code,
+    setCode,
+    isEditorActive,
+    setActiveEditor,
+}: JsonEditorProps): JSX.Element {
     return (
-        <EditorContainer isActive={isEditorActive} onClick={(e) => setActiveEditor(true)}>
+        <EditorContainer
+            isActive={isEditorActive}
+            onClick={e => setActiveEditor(true)}
+        >
             <Editor
                 value={code}
                 insertSpaces={false}
@@ -34,7 +42,7 @@ export default function JsonEditor({code, setCode, isEditorActive, setActiveEdit
                 }}
             />
         </EditorContainer>
-    );
+    )
 }
 
 const EditorContainer: any = styled.div`
@@ -47,18 +55,18 @@ const EditorContainer: any = styled.div`
         height: calc(100vh - 140px);
         font-size: 12px;
         background: #282828;
-        font-family: "SF Mono", monospace;
+        font-family: 'SF Mono', monospace;
 
         ${(props: any) => {
             if (props.isActive) {
                 return `
                     border: solid 1px #2e98f8 !important;
-                `;
+                `
             } else {
                 return `
                     border: solid 1px #464646;
-                `;
+                `
             }
         }}
     }
-`;
+`
