@@ -29,7 +29,7 @@ $ curl http://localhost:3000/posts/1
 > {"id":1,"title":"json-server","author":"typicode"}
 ```
 
-You can learn much more about JSON Server by reading the great [documentation](https://github.com/typicode/json-server#getting-started)
+You can learn much more about JSON Server by reading the great [documentation](https://github.com/typicode/json-server#getting-started).
 
 ### Contributing
 1) Fork the repository 
