@@ -16,7 +16,7 @@
             "author": "typicode"
         }
     ],
-    "comments": ["a new comment"],
+    "comments": ["comment", "another new comment"],
     "profile": {
         "name": "typicode"
     }
