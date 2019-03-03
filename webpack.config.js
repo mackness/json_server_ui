@@ -3,7 +3,6 @@ const _ = require('lodash')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const MinifyPlugin = require('babel-minify-webpack-plugin')
-const argv = require('argv');
 
 const isProduction = process.argv.some(a => a === '--production');
 
