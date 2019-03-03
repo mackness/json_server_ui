@@ -7,14 +7,14 @@
     "scripts": {
         "start": "electron .",
         "start:client": "webpack --watch",
-        "build:client": "webpack",
+        "build:client": "webpack --production",
         "release": "electron-packager . --ignore=\".git(ignore|modules)\"",
         "prettier-watch": "onchange '**/*.js' -- prettier --write {{changed}}",
         "prettier": "prettier --write ./src/**/*.{scss,json,js,ts,tsx}",
         "build:server": "tsc"
     },
     "repository": "https://github.com/electron/electron-quick-start",
-    "keywords": [   
+    "keywords": [
         "Electron",
         "quick",
         "start",
@@ -38,7 +38,9 @@
         "@types/react-dom": "16.8.2",
         "@types/react-native": "0.57.38",
         "@types/styled-components": "4.1.10",
+        "argv": "0.0.2",
         "babel-loader": "8.0.5",
+        "babel-minify-webpack-plugin": "0.3.1",
         "css-loader": "2.1.0",
         "electron": "^4.0.4",
         "electron-packager": "13.1.0",
