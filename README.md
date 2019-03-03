@@ -34,16 +34,19 @@ You can learn much more about JSON Server by reading the great [documentation](h
 ### Contributing
 1) Fork the repository 
 2) Clone your forked repository
-3) Make changes
-4) Submit a PR against the master branch of this repository
+3) Run `yarn` or `npm i` to install dependencies
+4) Start client side build process with `yarn start:client`
+5) Start the Electron process with `yarn start`
+6) Make changes
+7) Submit a PR against the master branch of this repository
 
 ### TODO
 * Access logs
 * Dispaly generated routes
 * Unit tests for client and server code
 * JSON validation in the UI
-* Fake data generator?
-* Support for SSL?
+* Support for SSL
+* Integrate with a fake data generator such as [Faker](https://github.com/Marak/faker.js), [Casual](https://github.com/boo1ean/casual), [Chance](https://github.com/victorquinn/chancejs) or [JSON Schema Faker](https://github.com/json-schema-faker/json-schema-faker).
 
 ### License
 
