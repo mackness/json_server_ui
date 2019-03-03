@@ -65,7 +65,7 @@ export default function App() {
                 isActive={isEditorActive}
                 onClick={() => setActiveEditor(false)}
                 onChange={(event) => setUrl(event.target.value)}
-                placeholder="https://gist.com/mock-api"
+                placeholder="https://github.com/typicode/demo/blob/master/db.json"
             />
             <SaveButton onClick={handleSave}>Update</SaveButton>
         </Container>
