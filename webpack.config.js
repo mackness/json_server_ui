@@ -44,7 +44,7 @@ const base = {
                 ],
             },
             {
-                test: /\.(otf)$/,
+                test: /\.(otf|png|jpg|gif)$/,
                 use: [
                     {
                         loader: 'file-loader',
