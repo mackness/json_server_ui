@@ -89,7 +89,7 @@ function startServer(options) {
                 label: 'What is this?',
                 click() {
                     shell.openExternal(
-                        'https://github.com/mackness/JSON-Server-UI#get-json-server-ui'
+                        'https://github.com/mackness/JSON-Server-UI'
                     );
                 },
             },
