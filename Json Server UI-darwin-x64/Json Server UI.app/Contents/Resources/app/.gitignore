@@ -1,0 +1,5 @@
+node_modules
+*.tgz
+.vscode
+.DS_Store
+dist
