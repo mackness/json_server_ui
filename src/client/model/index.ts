@@ -17,3 +17,9 @@ export function openExternal(payload: string): AxiosPromise<string> {
         payload
     });
 }
+
+export function displayContextMenu(payload: string): AxiosPromise<string> {
+    return axios.post('http://localhost:8080/api/menu', {
+        payload
+    });
+}

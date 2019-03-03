@@ -1,5 +1,5 @@
 {
-  "name": "electron-quick-start",
+  "name": "json-server-ui",
   "productName": "Json Server UI",
   "version": "1.0.0",
   "description": "A minimal Electron application",
@@ -8,6 +8,7 @@
     "start": "electron .",
     "start:client": "webpack --watch",
     "build:client": "webpack",
+    "pack-electron": "electron-packager .",
     "build:server": "tsc"
   },
   "repository": "https://github.com/electron/electron-quick-start",
@@ -18,7 +19,7 @@
     "tutorial",
     "demo"
   ],
-  "author": "GitHub",
+  "author": "@mackness",
   "license": "CC0-1.0",
   "devDependencies": {
     "@babel/core": "7.3.3",

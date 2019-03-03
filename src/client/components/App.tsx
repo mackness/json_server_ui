@@ -1,7 +1,8 @@
 import React from "react";
 import JsonEditor from "./JsonEditor";
 import styled from "styled-components";
-import { updateLocalDb, updateRemoteDb, openExternal } from "../model";
+import { Gear } from './Icon';
+import { updateLocalDb, updateRemoteDb, displayContextMenu } from "../model";
 
 const __INITIAL_STATE__ = `{
   "posts": [
@@ -40,14 +41,16 @@ export default function App() {
         }
     };
     const handleClick = () => {
-        openExternal('https://github.com/typicode/json-server#getting-started');
+        displayContextMenu('');
     }
     return (
         <Container>
             {/* <Caret /> */}
             <Header>
                 <H1>Local db.json</H1>
-                <InfoButton onClick={handleClick}>?</InfoButton>
+                <SettingsButton onClick={handleClick}>
+                    <Gear fill="#fff" height={10} width={10} />
+                </SettingsButton>
             </Header>
             <JsonEditor
                 code={code}
@@ -144,10 +147,10 @@ const SaveButton = styled(Button)`
     font-size: 13px;
 `;
 
-const InfoButton = styled(Button)`
+const SettingsButton = styled(Button)`
     width: 20px;
     height: 20px;
-    padding: 0 0 1px 0;
+    padding: 0;
     margin-right: 2px;
 `;
 

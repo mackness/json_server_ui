@@ -9,7 +9,7 @@ const appRootDir = require('app-root-dir');
 const enableDestroy = require('server-destroy');
 const jsonServer = require('json-server');
 const fs = require('fs');
-const { shell } = require('electron');
+const { shell, Menu, BrowserWindow } = require('electron');
 
 let jsonServerProcess;
 
@@ -37,7 +37,7 @@ function setupJsonServer(json) {
     });
 }
 
-function startServer() {
+function startServer(options) {
     const app = express();
     const PORT = 8080;
 
@@ -78,6 +78,34 @@ function startServer() {
     app.use('/api/external', (req, res) => {
         shell.openExternal(req.body.payload);
         res.sendStatus(200);
+    });
+
+    app.use('/api/menu', (req, res) => {
+        const template = [
+            {
+                label: 'What is this?',
+                click() {
+                    shell.openExternal('https://github.com/mackness/JSON-Server-UI#get-json-server-ui');
+                }
+            },
+            {
+                label: 'Detach',
+                click() {
+                    options.mainWindow.close();
+                    options.detachedWindow.show();
+                    options.mainWindow = options.detachedWindow;
+                }
+            },
+            {
+                label: 'Exit',
+                click() {
+                    options.mainWindow.close();
+                }
+            }
+        ]
+        const menu = Menu.buildFromTemplate(template);
+        Menu.setApplicationMenu(menu);
+        menu.popup();
     });
 
     // catch 404 and forward to error handler
