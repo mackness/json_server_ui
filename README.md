@@ -45,6 +45,7 @@ You can learn much more about JSON Server by reading the great [documentation](h
 * Dispaly generated routes
 * Unit tests for client and server code
 * JSON validation in the UI
+* Save database snapshots
 * Settings View
   * SSL setting
   * Configurable port setting
