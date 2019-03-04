@@ -35,7 +35,7 @@ export default function JsonEditor({
                 highlight={code => highlight(logCode(code), languages.javascript)}
                 padding={8}
                 style={{
-                    overflow: 'scroll',
+                    overflow: 'auto',
                     height: 'calc(100vh - 140px)',
                     outline: 'none',
                     background: '#282828',
