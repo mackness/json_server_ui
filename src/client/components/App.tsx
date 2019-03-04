@@ -1,48 +1,37 @@
-import React from 'react'
-import JsonEditor from './JsonEditor'
-import styled from 'styled-components'
-import { Gear } from './Icon'
-import { updateLocalDb, updateRemoteDb, displayContextMenu } from '../model'
+import React from 'react';
+import JsonEditor from './JsonEditor';
+import styled from 'styled-components';
+import { Gear } from './Icon';
+import { getLocalDbState } from '../model';
+import { updateLocalDb, updateRemoteDb, displayContextMenu } from '../model';
+const { remote } = require('electron');
 
-const __INITIAL_STATE__ = `{
-  "posts": [
-    {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    },
-    {
-      "id": 2,
-      "title": "json-server",
-      "author": "typicode"
-    },
-    {
-      "id": 3,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [],
-  "profile": {
-    "name": "typicode"
-  }
-}
-`
-
+let isMounted = false;
 export default function App() {
-    const [code, setCode] = React.useState(__INITIAL_STATE__)
-    const [url, setUrl] = React.useState('')
-    const [isEditorActive, setActiveEditor] = React.useState(true)
+    const [code, setCode] = React.useState('');
+    const [url, setUrl] = React.useState('');
+    const [isEditorActive, setActiveEditor] = React.useState(true);
+
     const handleSave = (event: React.SyntheticEvent): any => {
-        if (isEditorActive) {
-            updateLocalDb(code)
-        } else {
-            updateRemoteDb(url)
-        }
-    }
+        isEditorActive ? updateLocalDb(code) : updateRemoteDb(url);
+    };
+
     const handleClick = () => {
-        displayContextMenu('')
-    }
+        displayContextMenu('');
+    };
+
+    const fetchLocalDbState = () => {
+        getLocalDbState().then(response => {
+            return setCode(JSON.stringify(response.data, undefined, 2));
+        });
+    };
+
+    React.useEffect(() => {
+        if (!isMounted) {
+            remote.getCurrentWindow().on('show', fetchLocalDbState);
+        }
+        isMounted = true;
+    });
     return (
         <Container>
             {/* <Caret /> */}
@@ -69,7 +58,7 @@ export default function App() {
             />
             <SaveButton onClick={handleSave}>Update</SaveButton>
         </Container>
-    )
+    );
 }
 
 const Button: any = styled.button`
@@ -89,21 +78,21 @@ const Button: any = styled.button`
     &:active {
         background-color: #0b85ef;
     }
-`
+`;
 
 const Link: any = styled.a`
     background: #fff;
     color: #494949;
     font-size: 10px;
     border-radius: 20px;
-`
+`;
 
 const Container = styled.div`
     max-width: 800px;
     padding: 0 6px;
     display: flex;
     flex-direction: column;
-`
+`;
 
 const Caret: any = styled.div`
     width: 0;
@@ -111,14 +100,14 @@ const Caret: any = styled.div`
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
     border-bottom: 5px solid black;
-`
+`;
 
 const H1 = styled.p`
     color: #fff;
     font-size: 14px;
     flex-grow: 1;
     margin: 6px 0;
-`
+`;
 
 const Input: any = styled.input`
     background: #282828;
@@ -130,14 +119,14 @@ const Input: any = styled.input`
         if (props.isActive) {
             return `
                 border: solid 1px #464646;
-            `
+            `;
         } else {
             return `
                 border: solid 1px #2e98f8;
-            `
+            `;
         }
     }}
-`
+`;
 
 const SaveButton = styled(Button)`
     cursor: pointer;
@@ -145,17 +134,17 @@ const SaveButton = styled(Button)`
     width: 100%;
     padding: 6px 0;
     font-size: 13px;
-`
+`;
 
 const SettingsButton = styled(Button)`
     width: 20px;
     height: 20px;
     padding: 0;
     margin-right: 2px;
-`
+`;
 
 const Header: any = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-`
+`;

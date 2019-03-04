@@ -8,7 +8,7 @@
         "start": "electron .",
         "start:client": "webpack --watch",
         "build:client": "webpack --production",
-        "release": "npm run build:client && electron-packager . --ignore=\".git(ignore|modules)\"",
+        "release": "npm run build:client && electron-packager . --ignore=\".git(ignore|modules)\" --out ./package",
         "prettier-watch": "onchange '**/*.js' -- prettier --write {{changed}}",
         "prettier": "prettier --write ./src/**/*.{scss,json,js,ts,tsx}",
         "build:server": "tsc"

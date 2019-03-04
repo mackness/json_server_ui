@@ -1,15 +1,20 @@
-import * as React from 'react'
-import styled from 'styled-components'
-import Editor from 'react-simple-code-editor'
-import { highlight, languages } from 'prismjs'
-import 'prismjs/components/prism-clike'
-import 'prismjs/components/prism-javascript'
+import * as React from 'react';
+import styled from 'styled-components';
+import Editor from 'react-simple-code-editor';
+import { highlight, languages } from 'prismjs';
+import 'prismjs/components/prism-clike';
+import 'prismjs/components/prism-javascript';
 
 interface JsonEditorProps {
-    code: string
-    setCode: Function
-    isEditorActive: boolean
-    setActiveEditor: Function
+    code: string;
+    setCode: Function;
+    isEditorActive: boolean;
+    setActiveEditor: Function;
+}
+
+function logCode(code) {
+    console.log(code);
+    return code;
 }
 
 export default function JsonEditor({
@@ -27,7 +32,7 @@ export default function JsonEditor({
                 value={code}
                 insertSpaces={false}
                 onValueChange={code => setCode(code)}
-                highlight={code => highlight(code, languages.javascript)}
+                highlight={code => highlight(logCode(code), languages.javascript)}
                 padding={8}
                 style={{
                     overflow: 'scroll',
@@ -42,7 +47,7 @@ export default function JsonEditor({
                 }}
             />
         </EditorContainer>
-    )
+    );
 }
 
 const EditorContainer: any = styled.div`
@@ -56,17 +61,18 @@ const EditorContainer: any = styled.div`
         font-size: 12px;
         background: #282828;
         font-family: 'SF Mono', monospace;
-
-        ${(props: any) => {
-            if (props.isActive) {
-                return `
-                    border: solid 1px #2e98f8 !important;
-                `
-            } else {
-                return `
-                    border: solid 1px #464646;
-                `
-            }
-        }}
     }
-`
+
+    border-radius: 2px
+    ${(props: any) => {
+        if (props.isActive) {
+            return `
+                border: solid 1px #2e98f8 !important;
+            `;
+        } else {
+            return `
+                border: solid 1px #464646;
+            `;
+        }
+    }}
+`;

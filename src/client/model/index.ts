@@ -1,5 +1,9 @@
 import axios, { AxiosResponse, AxiosPromise } from 'axios';
 
+export function getLocalDbState(): AxiosPromise<string> {
+    return axios.get('http://localhost:8080/api/db');
+}
+
 export function updateLocalDb(payload: string): AxiosPromise<string> {
     return axios.post('http://localhost:8080/api/local', {
         payload: JSON.stringify(payload),

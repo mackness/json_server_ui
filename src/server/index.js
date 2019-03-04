@@ -113,6 +113,15 @@ function startServer(options) {
         menu.popup();
     });
 
+    app.use('/api/db', (req, res) => {
+        fs.readFile(`${path.join(__dirname)}/db.json`, 'utf8', function(err, contents) {
+            if (err) {
+                res.sendStatus(500);
+            }
+            res.json(JSON.parse(contents));
+        });
+    });
+
     // catch 404 and forward to error handler
     app.use(function(req, res, next) {
         next(createError(404));
@@ -123,4 +132,11 @@ function startServer(options) {
     });
 }
 
-module.exports = startServer;
+function restartServer() {
+    jsonServerProcess.destroy(() => setupJsonServer());
+}
+
+module.exports = {
+    startServer,
+    restartServer,
+};

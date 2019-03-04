@@ -11,6 +11,9 @@ const base = {
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.json'],
     },
+    externals: {
+        electron: 'electron'
+    },
     module: {
         rules: [
             {
@@ -67,7 +70,7 @@ const base = {
     },
     plugins: [
         new ProgressBarPlugin(),
-        new MiniCssExtractPlugin({ filename: 'index.css' }),
+        new MiniCssExtractPlugin({ filename: 'index.css' })
     ],
 }
 
