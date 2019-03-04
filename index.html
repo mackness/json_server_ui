@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>JSON Server UI</title>
-  </head>
-  <body>
-    <link rel="stylesheet" href="./dist/index.css">
-
-    <div id="root"></div>
-    <script>const electron = require('electron');</script>
-    <script>require('./dist/client.bundle.js')</script>
-  </body>
+    <head>
+        <meta charset="UTF-8" />
+        <title>JSON Server UI</title>
+        <script src="https://browser.sentry-cdn.com/4.6.4/bundle.min.js" crossorigin="anonymous"></script>
+        <script>
+            Sentry.init({
+                dsn:'https://73c1b76be64e419d94458d1a4e0a8957@sentry.io/1403376',
+            });
+        </script>
+        <link rel="stylesheet" href="./dist/index.css" />
+    </head>
+    <body>
+        <div id="root"></div>
+        <script>const electron = require('electron');</script>
+        <script>require('./dist/client.bundle.js');</script>
+    </body>
 </html>
