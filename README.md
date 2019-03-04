@@ -47,7 +47,7 @@ You can learn much more about JSON Server by reading the great [documentation](h
 * JSON validation in the UI
 * Settings View
   * SSL setting
-  * Port setting
+  * Configurable port setting
 * Integrate with a fake data generator such as [Faker](https://github.com/Marak/faker.js), [Casual](https://github.com/boo1ean/casual), [Chance](https://github.com/victorquinn/chancejs) or [JSON Schema Faker](https://github.com/json-schema-faker/json-schema-faker)
 
 ### License
