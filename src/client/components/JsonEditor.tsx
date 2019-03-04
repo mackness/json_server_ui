@@ -51,19 +51,10 @@ export default function JsonEditor({
 }
 
 const EditorContainer: any = styled.div`
-    textarea {
-        outline: 0;
-        color: #fff;
-        outline: 0;
-        overflow: scroll;
-        border-radius: 2px;
-        height: calc(100vh - 140px);
-        font-size: 12px;
-        background: #282828;
-        font-family: 'SF Mono', monospace;
-    }
+    overflow: hidden;
+    position: relative;
+    border-radius: 2px;
 
-    border-radius: 2px
     ${(props: any) => {
         if (props.isActive) {
             return `
@@ -75,4 +66,16 @@ const EditorContainer: any = styled.div`
             `;
         }
     }}
+
+    textarea {
+        outline: 0;
+        color: #fff;
+        outline: 0;
+        overflow: scroll;
+        border-radius: 2px;
+        height: calc(100vh - 140px);
+        font-size: 12px;
+        background: #282828;
+        font-family: 'SF Mono', monospace;
+    }
 `;

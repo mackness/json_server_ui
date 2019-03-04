@@ -104,7 +104,8 @@ function startServer(options) {
             {
                 label: 'Exit',
                 click() {
-                    options.mainWindow.quit();
+                    options.mainWindow.destroy();
+                    options.detachedWindow.destroy();
                 },
             },
         ];
