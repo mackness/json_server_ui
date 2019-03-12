@@ -3,7 +3,7 @@
 
 ![Alt Text](https://i.imgur.com/xQb9kSW.gif)
 
-**This is an Electron applicaiton that serves as a UI for the awesome [JSON Server](https://github.com/typicode/json-server)**
+**This is an Electron application that serves as a UI for the awesome [JSON Server](https://github.com/typicode/json-server)**
 
 ### Get JSON Server UI
 **[Download the latest release](https://github.com/mackness/JSON-Server-UI/releases/download/1.0.0-beta.0/Json.Server.UI.app.zip)** (macOS only)
