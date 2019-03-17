@@ -32,7 +32,15 @@ export default function JsonEditor({
                 value={code}
                 insertSpaces={false}
                 onValueChange={code => setCode(code)}
-                highlight={code => highlight(logCode(code), languages.javascript)}
+                highlight={code => {
+                    return highlight(logCode(code), languages.javascript)
+                        .split('\n')
+                        .map(
+                            (line, i) =>
+                                `<span class="editor-line" data-line-number="${i}">${line}</span>`
+                        )
+                        .join('\n');
+                }}
                 padding={8}
                 style={{
                     overflow: 'auto',
@@ -77,5 +85,26 @@ const EditorContainer: any = styled.div`
         font-size: 12px;
         background: #282828;
         font-family: 'SF Mono', monospace;
+    }
+
+    .container__editor {
+        font-size: 12px;
+        counter-reset: line;
+    }
+
+    .editor-line {
+        position: relative;
+        padding-left: 21px;
+    }
+
+    .editor-line:before {
+        position: absolute;
+        left: 0;
+        right: auto;
+        top: 0;
+        bottom: 0;
+        height: 100%;
+        color: #5C5C5C;
+        content: attr(data-line-number) " ";
     }
 `;
