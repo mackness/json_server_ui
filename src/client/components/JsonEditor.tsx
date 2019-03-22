@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import Notfication, { NotificationType } from './Notification';
 import Editor from 'react-simple-code-editor';
 import { highlight, languages } from 'prismjs';
 import 'prismjs/components/prism-clike';
@@ -28,6 +29,7 @@ export default function JsonEditor({
             isActive={isEditorActive}
             onClick={e => setActiveEditor(true)}
         >
+            <Notfication type={NotificationType.SUCCESS} show={true} text={'Updated Successfully'} />
             <Editor
                 value={code}
                 insertSpaces={false}
